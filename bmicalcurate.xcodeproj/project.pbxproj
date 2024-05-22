@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D83F867F2BFD90AC00886BA1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = D83F867E2BFD90AC00886BA1 /* TextFieldEffects */; };
+		D83F86822BFD90D000886BA1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = D83F86812BFD90D000886BA1 /* Toast */; };
+		D83F86852BFD90EB00886BA1 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = D83F86842BFD90EB00886BA1 /* FSCalendar */; };
 		D8914CDA2BFCE8F4003C166A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8914CD92BFCE8F4003C166A /* AppDelegate.swift */; };
 		D8914CDC2BFCE8F4003C166A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8914CDB2BFCE8F4003C166A /* SceneDelegate.swift */; };
 		D8914CDE2BFCE8F4003C166A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8914CDD2BFCE8F4003C166A /* ViewController.swift */; };
@@ -33,6 +36,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D83F86822BFD90D000886BA1 /* Toast in Frameworks */,
+				D83F86852BFD90EB00886BA1 /* FSCalendar in Frameworks */,
+				D83F867F2BFD90AC00886BA1 /* TextFieldEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +92,11 @@
 			dependencies = (
 			);
 			name = bmicalcurate;
+			packageProductDependencies = (
+				D83F867E2BFD90AC00886BA1 /* TextFieldEffects */,
+				D83F86812BFD90D000886BA1 /* Toast */,
+				D83F86842BFD90EB00886BA1 /* FSCalendar */,
+			);
 			productName = bmicalcurate;
 			productReference = D8914CD62BFCE8F4003C166A /* bmicalcurate.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +125,11 @@
 				Base,
 			);
 			mainGroup = D8914CCD2BFCE8F4003C166A;
+			packageReferences = (
+				D83F867D2BFD90AC00886BA1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+				D83F86802BFD90D000886BA1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				D83F86832BFD90EB00886BA1 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = D8914CD72BFCE8F4003C166A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -375,6 +391,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D83F867D2BFD90AC00886BA1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+		D83F86802BFD90D000886BA1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		D83F86832BFD90EB00886BA1 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D83F867E2BFD90AC00886BA1 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D83F867D2BFD90AC00886BA1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
+		};
+		D83F86812BFD90D000886BA1 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D83F86802BFD90D000886BA1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		D83F86842BFD90EB00886BA1 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D83F86832BFD90EB00886BA1 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D8914CCE2BFCE8F4003C166A /* Project object */;
 }

@@ -14,6 +14,8 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     
+    @IBOutlet var nicknameLabel: UILabel!
+    @IBOutlet var nicknameField: UITextField!
     @IBOutlet var heightLabel: UILabel!
     @IBOutlet var heightField: UITextField!
     @IBOutlet var weightLabel: UILabel!
@@ -23,7 +25,8 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet var calculateButton: UIButton!
     
-   
+    @IBOutlet var resetButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,9 +42,18 @@ class CalculatorViewController: UIViewController {
         
         imageView.image = UIImage(named: "image")
         
+        nicknameLabel.text = "닉네임을 입력해주세요"
+        nicknameLabel.font = .systemFont(ofSize: 15)
+        nicknameLabel.textAlignment = .left
+        
         heightLabel.text = "키가 어떻게 되시나요?"
         heightLabel.font = .systemFont(ofSize: 15)
         heightLabel.textAlignment = .left
+        
+        
+        nicknameField.keyboardType = .default
+        nicknameField.layer.borderWidth = 2
+        nicknameField.layer.cornerRadius = 15
         
         heightField.keyboardType = .numberPad
         heightField.layer.borderWidth = 2
@@ -62,10 +74,39 @@ class CalculatorViewController: UIViewController {
         calculateButton.layer.cornerRadius = 15
         calculateButton.backgroundColor = .purple
         
-       
+        resetButton.setTitle("초기화", for: .normal)
+        resetButton.setTitleColor(.red, for: .normal)
         
+        //2. 값 가져오기 (저장 된 값)
+        let userHeight = UserDefaults.standard.double(forKey: "userHeight")
+        let userWeight = UserDefaults.standard.double(forKey: "userWeight")
+        let usernickname = UserDefaults.standard.string(forKey: "userNickname")
+        
+        heightField.text = "\(userHeight)"
+        weightField.text = "\(userWeight)"
+        nicknameField.text = usernickname
     }
-
+    @IBAction func resetButtonClicked(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "userHeight")
+        UserDefaults.standard.removeObject(forKey: "userWeight")
+        UserDefaults.standard.removeObject(forKey: "userNickname")
+        
+        
+        //1.
+        //빈칸으로 넣으려면 nil
+        let alert = UIAlertController(title:"초기화 되었습니다.", message: nil, preferredStyle: .alert)
+        
+        //2.
+        
+        let close = UIAlertAction(title: "닫기", style: .cancel)
+        
+        //3. 버튼 합치기
+        alert.addAction(close)
+        
+        //4.
+        present(alert, animated : true)
+    }
+    
  
     @IBAction func ViewTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -89,6 +130,16 @@ class CalculatorViewController: UIViewController {
         }else{
             let height = Double(heightField.text!)!
             let weight = Double(weightField.text!)!
+            let nickname = nicknameField.text
+            
+            //1 .키.몸무게.닉네임 저장
+            UserDefaults.standard.setValue(height, forKey: "userHeight")
+            UserDefaults.standard.setValue(weight, forKey: "userWeight")
+            UserDefaults.standard.setValue(nickname, forKey: "userNickname")
+            
+            //heightField.text = "\(userHeight)"
+            //weightField.text = "\(userWeight)"
+            //nicknameField.text = usernickname
             
             //입력값이 너무 클 때
             if height > 250.00 || weight > 150.00 {
@@ -126,8 +177,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func randomCalculateClicked(_ sender: UIButton) {
-        let height:Double = Double.random(in: 100...250)
-        let weight:Double = Double.random(in: 100...250)
+        let height = Double.random(in: 100...250)
+        let weight = Double.random(in: 100...250)
         
         let bmi = weight / (height * height * 0.0001)
         //1.
